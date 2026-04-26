@@ -1,0 +1,51 @@
+[
+  {
+    "id": "maddi-charm",
+    "title": "more than meets the eye",
+    "file": "data/puzzle1.json",
+    "difficulty": "Medium",
+    "letters": 49
+  },
+  {
+    "id": "lincoln-life",
+    "title": "Life's Measure",
+    "file": "data/puzzle2.json",
+    "difficulty": "Hard",
+    "letters": 62
+  },
+  {
+    "id": "squirrel-trees-v2",
+    "title": "Forest Helpers",
+    "file": "data/puzzle3.json",
+    "difficulty": "Hard",
+    "letters": 67
+  },
+  {
+    "id": "hummingbird-flight",
+    "title": "Avian Acrobatics",
+    "file": "data/puzzle4.json",
+    "difficulty": "Hard",
+    "letters": 56
+  },
+  {
+    "id": "sharks-biofluorescence",
+    "title": "Glowing Depths",
+    "file": "data/puzzle5.json",
+    "difficulty": "Hard",
+    "letters": 92
+  },
+  {
+    "id": "jiffy-time",
+    "title": "A Jiffy of Time",
+    "file": "data/puzzle6.json",
+    "difficulty": "Hard",
+    "letters": 60
+  },
+  {
+    "id": "rogue-waves",
+    "title": "Rogue Waves",
+    "file": "data/puzzle7.json",
+    "difficulty": "Hard",
+    "letters": 92
+  }
+]

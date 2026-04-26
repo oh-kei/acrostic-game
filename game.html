@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing Acrostic</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="taskbar">
+        <div class="taskbar-left">
+            <a href="index.html" class="back-link">← <span>Back</span></a>
+            <span id="puzzle-title" class="puzzle-name">Loading...</span>
+        </div>
+        <div class="taskbar-right">
+            <div id="timer" class="timer-box">00:00</div>
+            <button class="pause-btn" onclick="togglePause()">Pause</button>
+        </div>
+    </nav>
+
+    <div class="progress-container">
+        <div id="progress-bar" class="progress-bar"></div>
+    </div>
+    <div id="progress-text" class="progress-info">0 of 0 filled — 0%</div>
+
+    <main class="game-main">
+        <!-- Quote Section -->
+        <div class="quote-wrapper">
+            <div id="quote-grid" class="quote-grid"></div>
+        </div>
+
+        <!-- General Entry Box -->
+        <div class="entry-section">
+            <div class="general-entry-container">
+                <label for="general-word-input" style="font-size: 0.75rem; font-weight: 500; color: var(--accent-color);">WORD ENTRY</label>
+                <div class="entry-sidebar"></div>
+                <input type="text" id="general-word-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+
+        <!-- Clues Section -->
+        <div id="clues-list" class="clues-grid"></div>
+    </main>
+
+    <div id="pause-overlay">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 1rem;">PAUSED</h2>
+            <p style="color: var(--text-secondary);">Press <strong>ESC</strong> or the pause button to resume.</p>
+            <button class="play-btn" style="margin-top: 2rem; background: var(--accent-color); color: white; border: none; padding: 0.75rem 2rem; border-radius: 8px; cursor: pointer;" onclick="togglePause()">Resume</button>
+        </div>
+    </div>
+
+    <div id="success-overlay">
+        <div class="modal-content">
+            <h2 style="color: #22c55e; margin-bottom: 1rem;">PUZZLE SOLVED!</h2>
+            <p id="final-stats" style="color: var(--text-secondary); margin-bottom: 2rem;"></p>
+            <div class="modal-actions">
+                <button class="secondary-btn" onclick="closeSuccessOverlay()">View Puzzle</button>
+                <a href="index.html" class="back-home">Back to Selection</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

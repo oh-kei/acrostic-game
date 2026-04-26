@@ -1,0 +1,16 @@
+{
+  "id": "jiffy-time",
+  "title": "A Jiffy of Time",
+  "quote": "A jiffy is an actual unit of time the duration light takes to travel one cm",
+  "clues": [
+    { "word": "MARLIN", "hint": "some may think its tuna" },
+    { "word": "JEFFREY", "hint": "a man with an island" },
+    { "word": "TUITION", "hint": "The cost of learning at an institution" },
+    { "word": "SULFATE", "hint": "Chemical compound found in Epsom salts" },
+    { "word": "TONIGHT", "hint": "During the current evening" },
+    { "word": "TIMEOUT", "hint": "A temporary suspension of play" },
+    { "word": "HANCOCK", "hint": "John who signed very largely" },
+    { "word": "DATASET", "hint": "A collection of structured information" },
+    { "word": "AVAIL", "hint": "To be helpful or of use" }
+  ]
+}

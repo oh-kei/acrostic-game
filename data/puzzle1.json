@@ -1,0 +1,14 @@
+{
+  "id": "maddi-charm",
+  "title": "more than meets the eye",
+  "quote": "Maddi has charm and beaut thats another way to say shes cute",
+  "clues": [
+    { "word": "CHUNDER", "hint": "Australian slang for throwing up." },
+    { "word": "ASS", "hint": "A donkey or a notoriously stubborn person." },
+    { "word": "THEMATIC", "hint": "Relating to a particular subject or recurring motif." },
+    { "word": "DATASHEET", "hint": "A document providing technical specifications of a product." },
+    { "word": "BROADWAY", "hint": "The iconic New York City street famous for its theaters." },
+    { "word": "SAMANTHA", "hint": "The name of the lead character in the classic show 'Bewitched'." },
+    { "word": "YOUTHS", "hint": "Plural term for young people or adolescents." }
+  ]
+}
