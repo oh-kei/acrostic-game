@@ -47,5 +47,12 @@
     "file": "data/puzzle7.json",
     "difficulty": "Hard",
     "letters": 92
+  },
+  {
+    "id": "tardigrades-space",
+    "title": "Indestructible Bears",
+    "file": "data/puzzle8.json",
+    "difficulty": "Hard",
+    "letters": 82
   }
 ]

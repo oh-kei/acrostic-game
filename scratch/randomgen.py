@@ -86,7 +86,7 @@ def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
 if __name__ == "__main__":
     # --- EDIT THESE THREE LINES ---
     # Note: Punctuation (commas, quotes, etc.) is ignored automatically.
-    MY_QUOTE = "Rogue waves - vertical walls of water - were believed to be maritime myths until lasers finally proved they exist"
-    MY_MANDATORY_WORD = "raspberry"
+    MY_QUOTE = "tardigrades can withstand the vacuum of outer space, extreme radiation, and boiling temperatures"
+    MY_MANDATORY_WORD = "inheritance"
     MY_SEED = 827  # Change this to get different word lists
     solve_perfect_acrostic(MY_QUOTE, MY_MANDATORY_WORD, seed_value=MY_SEED)

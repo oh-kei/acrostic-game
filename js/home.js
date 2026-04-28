@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </span>
                 </div>
             `;
-            card.onclick = () => location.href = `game.html?id=${puzzle.id}`;
+            card.onclick = () => location.href = `game?id=${puzzle.id}`;
             puzzleList.appendChild(card);
         });
 

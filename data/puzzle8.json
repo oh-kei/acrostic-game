@@ -1,0 +1,16 @@
+{
+  "id": "tardigrades-space",
+  "title": "Indestructible Bears",
+  "quote": "Tardigrades can withstand the vacuum of outer space, extreme radiation, and boiling temperatures",
+  "clues": [
+    { "word": "INHERITANCE", "hint": "The mechanism by which one class acquires the properties and behaviors of another, fundamental to object-oriented programming in C++" },
+    { "word": "PORTSMOUTH", "hint": "Coastal city in Hampshire, England, known for its historic naval base" },
+    { "word": "AFTERWARDS", "hint": "At a later time; subsequently" },
+    { "word": "AUTOMATED", "hint": "Operated by machines or computers, to reduce human labor" },
+    { "word": "EXCAVATION", "hint": "The act of digging out a site, especially in archaeology" },
+    { "word": "DUAL", "hint": "Consisting of two parts, elements, or aspects" },
+    { "word": "UNDERAGE", "hint": "Too young to legally engage in a specific activity" },
+    { "word": "PRESCRIBED", "hint": "Recommended or authorized by a medical practitioner, or laid down as a rule" },
+    { "word": "ESTIMATING", "hint": "Roughly calculating or judging the value, number, or quantity of something" }
+  ]
+}
