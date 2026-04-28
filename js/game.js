@@ -13,6 +13,10 @@ let timerInterval = null;
 let isPaused = false;
 let gameFinished = false;
 let secondsElapsed = 0;
+let clueCount = 3;
+let totalHintsUsed = 0;
+let isHintMode = false;
+let firstHintUsed = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
@@ -66,8 +70,28 @@ function setupEventListeners() {
         });
         genInput.addEventListener('focus', () => {
             clearAllHighlights();
+            // Default: no cursor
+            genInput.style.caretColor = 'transparent';
+        });
+        genInput.addEventListener('click', () => {
+            // If already focused, show cursor
+            if (document.activeElement === genInput) {
+                genInput.style.caretColor = 'var(--accent-color)';
+            }
         });
     }
+
+    // Scroll listener for sticky entry box
+    window.addEventListener('scroll', () => {
+        const entry = document.querySelector('.entry-section');
+        if (entry) {
+            if (window.scrollY > 20) {
+                entry.classList.add('scrolled');
+            } else {
+                entry.classList.remove('scrolled');
+            }
+        }
+    });
 }
 
 function initGame() {
@@ -113,8 +137,14 @@ function renderQuote() {
                 
                 if (quoteState[charIdx]) cell.classList.add('filled');
                 
-                // Clicking a quote cell highlights the corresponding clue cell
-                cell.onclick = () => focusClueFromQuote(charIdx);
+                // Clicking a quote cell highlights the corresponding clue cell or reveals a hint
+                cell.onclick = () => {
+                    if (isHintMode) {
+                        useClue('quote', charIdx);
+                    } else {
+                        focusClueFromQuote(charIdx);
+                    }
+                };
             } else {
                 cell.classList.add('non-alpha');
                 cell.classList.add('punctuation');
@@ -164,6 +194,15 @@ function renderClues() {
                     highlightQuoteCell(mapEntry.quoteIndex);
                     highlightCluePanel(clueIdx);
                 };
+                
+                input.onclick = (e) => {
+                    if (isHintMode) {
+                        e.preventDefault();
+                        input.blur(); // Prevent focus/cursor
+                        useClue('clue', mapEntry.quoteIndex, clueIdx, charIdx);
+                    }
+                };
+
                 inputGroup.appendChild(input);
             } else {
                 const span = document.createElement('span');
@@ -330,7 +369,7 @@ function checkVictory() {
         saveBestTime();
         
         const finalTime = document.getElementById('timer').innerText;
-        document.getElementById('final-stats').innerText = `You completed the puzzle in ${finalTime}!`;
+        document.getElementById('final-stats').innerText = `You completed the puzzle in ${finalTime} with ${totalHintsUsed} hints!`;
         document.getElementById('success-overlay').style.display = 'flex';
     }
 }
@@ -579,10 +618,30 @@ function togglePause() {
 function saveBestTime() {
     const finalTime = document.getElementById('timer').innerText;
     const puzzleId = puzzleData.id;
-    const currentBest = localStorage.getItem(`bestTime_${puzzleId}`);
+    const currentBestStr = localStorage.getItem(`bestTime_${puzzleId}`);
     
-    if (!currentBest || compareTimes(finalTime, currentBest) < 0) {
-        localStorage.setItem(`bestTime_${puzzleId}`, finalTime);
+    let isNewBest = false;
+    if (!currentBestStr) {
+        isNewBest = true;
+    } else {
+        try {
+            const currentBest = JSON.parse(currentBestStr);
+            if (compareTimes(finalTime, currentBest.time) < 0) {
+                isNewBest = true;
+            } else if (compareTimes(finalTime, currentBest.time) === 0 && totalHintsUsed < currentBest.hints) {
+                isNewBest = true;
+            }
+        } catch (e) {
+            // Fallback for old format
+            if (compareTimes(finalTime, currentBestStr) < 0) isNewBest = true;
+        }
+    }
+
+    if (isNewBest) {
+        localStorage.setItem(`bestTime_${puzzleId}`, JSON.stringify({
+            time: finalTime,
+            hints: totalHintsUsed
+        }));
     }
 }
 
@@ -590,6 +649,98 @@ function compareTimes(t1, t2) {
     const [m1, s1] = t1.split(":").map(Number);
     const [m2, s2] = t2.split(":").map(Number);
     return (m1 * 60 + s1) - (m2 * 60 + s2);
+}
+
+/**
+ * Clue/Hint Logic
+ */
+function toggleHintMode() {
+    if (clueCount <= 0) {
+        alert("No clues remaining!");
+        return;
+    }
+    
+    isHintMode = !isHintMode;
+    const hintBtn = document.getElementById('hint-btn');
+    const hintMsg = document.getElementById('hint-message');
+    
+    if (isHintMode) {
+        hintBtn.classList.add('active');
+        hintBtn.innerText = 'Cancel';
+        document.body.style.cursor = 'help';
+        
+        hintMsg.innerText = "Select a letter to reveal it";
+        hintMsg.classList.add('visible');
+
+        // Add visual target class to all inputs/cells
+        document.querySelectorAll('.letter-cell:not(.non-alpha), .clue-char-input:not([readonly])').forEach(el => {
+            el.classList.add('hint-target');
+        });
+    } else {
+        deactivateHintMode();
+    }
+}
+
+function deactivateHintMode() {
+    isHintMode = false;
+    const hintBtn = document.getElementById('hint-btn');
+    const hintMsg = document.getElementById('hint-message');
+    
+    hintBtn.classList.remove('active');
+    hintBtn.innerText = 'Hint';
+    document.body.style.cursor = 'default';
+    
+    hintMsg.classList.remove('visible');
+    
+    document.querySelectorAll('.hint-target').forEach(el => {
+        el.classList.remove('hint-target');
+    });
+}
+
+function useClue(type, quoteIdx, clueIdx, charIdx) {
+    if (!isHintMode || clueCount <= 0) return;
+
+    // Get the correct character
+    const cleanQuote = puzzleData.quote.toUpperCase().replace(/[^A-Z]/g, "");
+    const correctChar = cleanQuote[quoteIdx];
+
+    // Check if it's already correct
+    if (quoteState[quoteIdx] === correctChar) {
+        // Just deactivate if they click a correct cell, or show a small message
+        const hintMsg = document.getElementById('hint-message');
+        hintMsg.innerText = "Letter already correct!";
+        setTimeout(() => {
+            if (isHintMode) hintMsg.innerText = "Select a letter to reveal it";
+        }, 1500);
+        return;
+    }
+
+    // Apply the clue
+    clueCount--;
+    totalHintsUsed++;
+    document.getElementById('clue-count').innerText = `${clueCount} clues left`;
+
+    // Update quote state
+    quoteState[quoteIdx] = correctChar;
+    updateQuoteCell(quoteIdx, correctChar);
+
+    // Sync all clue inputs that map to this quote position
+    mapping.forEach((wordMapping, cIdx) => {
+        wordMapping.forEach((mapEntry, cCharIdx) => {
+            if (mapEntry.quoteIndex === quoteIdx) {
+                clueState[cIdx][cCharIdx] = correctChar;
+                const input = document.getElementById(`clue-input-${cIdx}-${cCharIdx}`);
+                if (input) {
+                    input.value = correctChar;
+                }
+            }
+        });
+    });
+
+    deactivateHintMode();
+    updateProgress();
+    validateWords();
+    checkVictory();
 }
 
 // Removed the redundant DOMContentLoaded listener at the bottom since I moved it to setupEventListeners

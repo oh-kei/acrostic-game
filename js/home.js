@@ -8,7 +8,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         puzzleList.innerHTML = '';
 
         puzzles.forEach(puzzle => {
-            const bestTime = localStorage.getItem(`bestTime_${puzzle.id}`);
+            const bestTimeRaw = localStorage.getItem(`bestTime_${puzzle.id}`);
+            let bestTimeDisplay = '--:--';
+            
+            if (bestTimeRaw) {
+                try {
+                    const parsed = JSON.parse(bestTimeRaw);
+                    bestTimeDisplay = `${parsed.time} (${parsed.hints} hints)`;
+                } catch (e) {
+                    bestTimeDisplay = bestTimeRaw; // Old format
+                }
+            }
             
             const card = document.createElement('div');
             card.className = `puzzle-card`;
@@ -20,8 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 <div class="card-footer">
                     <span style="font-size: 0.75rem; color: var(--text-secondary);">Best Record</span>
-                    <span style="font-size: 0.85rem; font-weight: 500; color: ${bestTime ? 'var(--accent-color)' : 'var(--text-secondary)'};">
-                        ${bestTime || '--:--'}
+                    <span style="font-size: 0.85rem; font-weight: 500; color: ${bestTimeRaw ? 'var(--accent-color)' : 'var(--text-secondary)'};">
+                        ${bestTimeDisplay}
                     </span>
                 </div>
             `;

@@ -210,6 +210,71 @@ h1, h2, h3, h4 {
     color: var(--accent-color);
 }
 
+/* Hint Button & Container */
+.hint-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 0.5rem;
+}
+
+.hint-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.4rem 1.2rem;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.hint-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.hint-btn.active {
+    background: #ef4444; /* Red when in hint mode */
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.clue-count {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.hint-container-central {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.hint-message {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #D4AF37; /* Gold */
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hint-message.visible {
+    opacity: 1;
+}
+
 /* Progress Bar */
 .progress-container {
     width: 100%;
@@ -302,6 +367,23 @@ h1, h2, h3, h4 {
     color: #0F6E56;
 }
 
+.letter-cell.hint-target {
+    cursor: help !important;
+}
+
+.letter-cell.hint-target:hover, .clue-char-input.hint-target:hover {
+    border-color: #D4AF37 !important; /* Gold */
+    background: #FFF9E6 !important; /* Light Gold */
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.3) !important;
+}
+
+.clue-char-input.hint-target {
+    cursor: help !important;
+    caret-color: transparent !important;
+    user-select: none !important;
+    pointer-events: auto !important;
+}
+
 .letter-cell.correct .letter-val, .letter-cell.letter-correct .letter-val {
     color: #0F6E56;
 }
@@ -326,7 +408,18 @@ h1, h2, h3, h4 {
 
 /* Word Entry */
 .entry-section {
-    margin-bottom: 2.5rem;
+    position: sticky;
+    top: 64px; /* Adjust based on taskbar height */
+    z-index: 90;
+    padding: 1rem 0;
+    background: var(--bg-page);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.entry-section.scrolled {
+    padding: 0.75rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .general-entry-container {
@@ -338,6 +431,7 @@ h1, h2, h3, h4 {
     gap: 0.75rem;
     align-items: center;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .general-entry-container:focus-within {
