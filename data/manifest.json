@@ -54,5 +54,12 @@
     "file": "data/puzzle8.json",
     "difficulty": "Hard",
     "letters": 82
+  },
+  {
+    "id": "peanut-butter-fact",
+    "title": "Jif",
+    "file": "data/puzzle9.json",
+    "difficulty": "Hard",
+    "letters": 64
   }
 ]
