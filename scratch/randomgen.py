@@ -34,7 +34,7 @@ def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
         with open(dict_path, 'r', encoding='utf-8') as f:
             for line in f:
                 w = line.strip().lower()
-                if 3 <= len(w) <= 10 and w.isalpha() and len(set(w)) > 1:
+                if 3 <= len(w) <= 8 and w.isalpha() and len(set(w)) > 1:
                     counts = Counter(w)
                     # Only add words that fit in the remaining bank
                     if all(counts[c] <= target_bank[c] for c in counts):
@@ -86,7 +86,7 @@ def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
 if __name__ == "__main__":
     # --- EDIT THESE THREE LINES ---
     # Note: Punctuation (commas, quotes, etc.) is ignored automatically.
-    MY_QUOTE = "tardigrades can withstand the vacuum of outer space, extreme radiation, and boiling temperatures"
-    MY_MANDATORY_WORD = "inheritance"
+    MY_QUOTE = "It takes roughly five hundred and forty peanuts to make a jar of peanut butter"
+    MY_MANDATORY_WORD = "fsh"
     MY_SEED = 827  # Change this to get different word lists
     solve_perfect_acrostic(MY_QUOTE, MY_MANDATORY_WORD, seed_value=MY_SEED)
