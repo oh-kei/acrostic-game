@@ -3,6 +3,15 @@ from collections import Counter
 import random
 import re
 
+# --- CONFIGURATION ---
+MIN_LEN = 3         # Minimum length of any word
+MAX_LEN = 12       # Maximum length of any word
+MIN_SHORT = 4       # Force at least this many short words
+MIN_LONG = 4        # Force at least this many long words
+MAX_SHORT_LEN = 6   # Words <= this are 'short', above are 'long'
+PREF_LEN_MIN = 6    # Preferred length range (lower cost)
+PREF_LEN_MAX = 8    # Preferred length range (lower cost)
+
 def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
     # Set seed for variation
     random.seed(seed_value)
@@ -34,7 +43,7 @@ def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
         with open(dict_path, 'r', encoding='utf-8') as f:
             for line in f:
                 w = line.strip().lower()
-                if 3 <= len(w) <= 8 and w.isalpha() and len(set(w)) > 1:
+                if MIN_LEN <= len(w) <= MAX_LEN and w.isalpha() and len(set(w)) > 1:
                     counts = Counter(w)
                     # Only add words that fit in the remaining bank
                     if all(counts[c] <= target_bank[c] for c in counts):
@@ -55,8 +64,26 @@ def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
     # Variables: x[word] is how many times we use that word
     word_vars = pulp.LpVariable.dicts("Words", dictionary, lowBound=0, cat='Binary')
 
-    # OBJECTIVE: Minimize word count + slight random weights to vary results
-    word_weights = {w: random.uniform(1.0, 1.1) for w in dictionary}
+    # --- BALANCED OBJECTIVE & CONSTRAINTS ---
+    # 1. Define 'long' and 'short' based on config
+    long_words = [w for w in dictionary if len(w) > MAX_SHORT_LEN]
+    short_words = [w for w in dictionary if len(w) <= MAX_SHORT_LEN]
+
+    # 2. CONSTRAINTS: Ensure we have a mix
+    prob += pulp.lpSum([word_vars[w] for w in long_words]) >= MIN_LONG
+    prob += pulp.lpSum([word_vars[w] for w in short_words]) >= MIN_SHORT
+
+    # 3. OBJECTIVE: Encourage mid-range words and add variety
+    word_weights = {}
+    for w in dictionary:
+        length = len(w)
+        # Preferred range words are 'cheapest' to encourage their use
+        if PREF_LEN_MIN <= length <= PREF_LEN_MAX:
+            base_cost = 1.0
+        else:
+            base_cost = 1.2 
+        word_weights[w] = base_cost + random.uniform(0, 0.5)
+
     prob += pulp.lpSum([word_vars[w] * word_weights[w] for w in dictionary])
 
     # 4. THE CONSTRAINTS (Optimized with pre-calculated counts)
@@ -86,7 +113,7 @@ def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
 if __name__ == "__main__":
     # --- EDIT THESE THREE LINES ---
     # Note: Punctuation (commas, quotes, etc.) is ignored automatically.
-    MY_QUOTE = "It takes roughly five hundred and forty peanuts to make a jar of peanut butter"
-    MY_MANDATORY_WORD = "fsh"
+    MY_QUOTE = "Screeched is the longest word in the English language composed of just one syllable"
+    MY_MANDATORY_WORD = "colours"
     MY_SEED = 827  # Change this to get different word lists
     solve_perfect_acrostic(MY_QUOTE, MY_MANDATORY_WORD, seed_value=MY_SEED)

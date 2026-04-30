@@ -1,65 +1,72 @@
 [
   {
-    "id": "maddi-charm",
+    "id": "1",
     "title": "more than meets the eye",
     "file": "data/puzzle1.json",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "letters": 49
   },
   {
-    "id": "lincoln-life",
+    "id": "2",
     "title": "Life's Measure",
     "file": "data/puzzle2.json",
-    "difficulty": "Hard",
+    "difficulty": "Medium",
     "letters": 62
   },
   {
-    "id": "squirrel-trees-v2",
+    "id": "3",
     "title": "Forest Helpers",
     "file": "data/puzzle3.json",
-    "difficulty": "Hard",
+    "difficulty": "Medium",
     "letters": 67
   },
   {
-    "id": "hummingbird-flight",
+    "id": "4",
     "title": "Avian Acrobatics",
     "file": "data/puzzle4.json",
-    "difficulty": "Hard",
+    "difficulty": "Easy",
     "letters": 56
   },
   {
-    "id": "sharks-biofluorescence",
+    "id": "5",
     "title": "Glowing Depths",
     "file": "data/puzzle5.json",
     "difficulty": "Hard",
     "letters": 92
   },
   {
-    "id": "jiffy-time",
+    "id": "6",
     "title": "A Jiffy of Time",
     "file": "data/puzzle6.json",
-    "difficulty": "Hard",
+    "difficulty": "Easy",
     "letters": 60
   },
   {
-    "id": "rogue-waves",
+    "id": "7",
     "title": "Rogue Waves",
     "file": "data/puzzle7.json",
     "difficulty": "Hard",
     "letters": 92
   },
   {
-    "id": "tardigrades-space",
+    "id": "8",
     "title": "Indestructible Bears",
     "file": "data/puzzle8.json",
     "difficulty": "Hard",
     "letters": 82
   },
   {
-    "id": "peanut-butter-fact",
+    "id": "9",
     "title": "Jif",
     "file": "data/puzzle9.json",
-    "difficulty": "Hard",
+    "difficulty": "Medium",
     "letters": 64
+  },
+  {
+    "id": "10",
+    "title": "eeeeeeeee",
+    "file": "data/puzzle10.json",
+    "difficulty": "Medium",
+    "letters": 70
   }
 ]

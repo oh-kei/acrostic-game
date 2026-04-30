@@ -1,15 +1,39 @@
 {
-  "id": "lincoln-life",
+  "id": "2",
   "title": "Life's Measure",
   "quote": "in the end its not the years in your life that count its the life in your years",
   "clues": [
-    { "word": "FALAFEL", "hint": "Middle Eastern deep-fried chickpea balls." },
-    { "word": "YOUTHS", "hint": "Young people or adolescents." },
-    { "word": "INSERTIONS", "hint": "Additions or things placed within something else." },
-    { "word": "AUTHENTICITY", "hint": "The quality of being genuine or real." },
-    { "word": "HIDES", "hint": "Animal skins used for leather. Also, conceals." },
-    { "word": "NINETEENTH", "hint": "One before the twentieth" },
-    { "word": "YOU", "hint": "The person being spoken to." },
-    { "word": "TERRITORY", "hint": "A specific area of land or region." }
+    {
+      "word": "FALAFEL",
+      "hint": "Middle Eastern deep-fried chickpea balls."
+    },
+    {
+      "word": "YOUTHS",
+      "hint": "Young people or adolescents."
+    },
+    {
+      "word": "INSERTIONS",
+      "hint": "Additions or things placed within something else."
+    },
+    {
+      "word": "AUTHENTICITY",
+      "hint": "The quality of being genuine or real."
+    },
+    {
+      "word": "HIDES",
+      "hint": "Animal skins used for leather. Also, conceals."
+    },
+    {
+      "word": "NINETEENTH",
+      "hint": "One before the twentieth"
+    },
+    {
+      "word": "YOU",
+      "hint": "The person being spoken to."
+    },
+    {
+      "word": "TERRITORY",
+      "hint": "A specific area of land or region."
+    }
   ]
 }

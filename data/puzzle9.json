@@ -1,16 +1,43 @@
 {
-  "id": "peanut-butter-fact",
+  "id": "9",
   "title": "Jif",
   "quote": "It takes roughly five hundred and forty peanuts to make a jar of peanut butter",
   "clues": [
-    { "word": "FSH", "hint": "The name of a biomechanical fish super team" },
-    { "word": "FEATURED", "hint": "Highlighted as a main attraction or primary focus" },
-    { "word": "TRAVELER", "hint": "A voyager or wayfarer on a long journey" },
-    { "word": "APPOINT", "hint": "To formally designate someone to a position or role" },
-    { "word": "AUTONOMY", "hint": "The state of self-governance or independence" },
-    { "word": "ADJUSTED", "hint": "Slightly altered or fine-tuned for a better fit" },
-    { "word": "KAYAKING", "hint": "One of the hobbies of the woman in Apex, making her a --er" },
-    { "word": "FOURTH", "hint": "third,...,fifth" },
-    { "word": "BRUNETTE", "hint": "Describing a person with dark brown hair" }
+    {
+      "word": "FSH",
+      "hint": "The name of a biomechanical fish super team"
+    },
+    {
+      "word": "FEATURED",
+      "hint": "Highlighted as a main attraction or primary focus"
+    },
+    {
+      "word": "TRAVELER",
+      "hint": "A voyager or wayfarer on a long journey"
+    },
+    {
+      "word": "APPOINT",
+      "hint": "To formally designate someone to a position or role"
+    },
+    {
+      "word": "AUTONOMY",
+      "hint": "The state of self-governance or independence"
+    },
+    {
+      "word": "ADJUSTED",
+      "hint": "Slightly altered or fine-tuned for a better fit"
+    },
+    {
+      "word": "KAYAKING",
+      "hint": "One of the hobbies of the woman in Apex, making her a --er"
+    },
+    {
+      "word": "FOURTH",
+      "hint": "third,...,fifth"
+    },
+    {
+      "word": "BRUNETTE",
+      "hint": "Describing a person with dark brown hair"
+    }
   ]
 }

@@ -1,14 +1,35 @@
 {
-  "id": "hummingbird-flight",
+  "id": "4",
   "title": "Avian Acrobatics",
   "quote": "hummingbirds can fly backwards and upside down with total control",
   "clues": [
-    { "word": "CHUD", "hint": "Kei's favourite insult." },
-    { "word": "BADMINTON", "hint": "A sport involving a shuttlecock" },
-    { "word": "WONDERFULLY", "hint": "In a way that inspires admiration or delight; extremely well." },
-    { "word": "LIMP", "hint": "To walk with difficulty because of an injured leg or foot." },
-    { "word": "TRANSITIONS", "hint": "The process of changing from one state or condition to another." },
-    { "word": "WATCHDOG", "hint": "A person or group that monitors organizations to prevent illegal or unethical behavior. 👀🐶" },
-    { "word": "BACKWARDS", "hint": "In a direction or order that is the reverse of what is usual." }
+    {
+      "word": "CHUD",
+      "hint": "Kei's favourite insult."
+    },
+    {
+      "word": "BADMINTON",
+      "hint": "A sport involving a shuttlecock"
+    },
+    {
+      "word": "WONDERFULLY",
+      "hint": "In a way that inspires admiration or delight; extremely well."
+    },
+    {
+      "word": "LIMP",
+      "hint": "To walk with difficulty because of an injured leg or foot."
+    },
+    {
+      "word": "TRANSITIONS",
+      "hint": "The process of changing from one state or condition to another."
+    },
+    {
+      "word": "WATCHDOG",
+      "hint": "A person or group that monitors organizations to prevent illegal or unethical behavior. \ud83d\udc40\ud83d\udc36"
+    },
+    {
+      "word": "BACKWARDS",
+      "hint": "In a direction or order that is the reverse of what is usual."
+    }
   ]
 }
