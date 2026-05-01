@@ -68,5 +68,12 @@
     "file": "data/puzzle10.json",
     "difficulty": "Medium",
     "letters": 70
+  },
+  {
+    "id": "11",
+    "title": "Swiss Piggies & Tiny Octopi",
+    "file": "data/puzzle11.json",
+    "difficulty": "Hard",
+    "letters": 94
   }
 ]

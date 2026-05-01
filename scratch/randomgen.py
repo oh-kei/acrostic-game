@@ -113,7 +113,7 @@ def solve_perfect_acrostic(quote_str, mandatory_word, seed_value=42):
 if __name__ == "__main__":
     # --- EDIT THESE THREE LINES ---
     # Note: Punctuation (commas, quotes, etc.) is ignored automatically.
-    MY_QUOTE = "Screeched is the longest word in the English language composed of just one syllable"
-    MY_MANDATORY_WORD = "colours"
+    MY_QUOTE = "In Switzerland, it is illegal to own only one guinea pig. Also, A baby octopus is about as small as a flea when it is born."
+    MY_MANDATORY_WORD = "campus"
     MY_SEED = 827  # Change this to get different word lists
     solve_perfect_acrostic(MY_QUOTE, MY_MANDATORY_WORD, seed_value=MY_SEED)
