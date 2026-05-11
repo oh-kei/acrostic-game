@@ -75,5 +75,19 @@
     "file": "data/puzzle11.json",
     "difficulty": "Hard",
     "letters": 94
+  },
+  {
+    "id": "12",
+    "title": "Magic Material",
+    "file": "data/puzzle12.json",
+    "difficulty": "Hard",
+    "letters": 131
+  },
+  {
+    "id": "13",
+    "title": "Sweet Layers",
+    "file": "data/puzzle13.json",
+    "difficulty": "Medium",
+    "letters": 76
   }
 ]
